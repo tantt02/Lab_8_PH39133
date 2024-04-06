@@ -1,0 +1,120 @@
+﻿
+@model Customers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@{
+    var wrong = ViewData["wrong"];
+    Layout = null;
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/Assignment_PH35423.styles.css" asp-append-version="true" />
+<script src="~/icon/font_awesome.js">
+</script>
+<style>
+    body {
+        margin : 0px ;
+    }
+    .container1 {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .input-container {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    label {
+        display: block;
+        color: #333;
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+
+    a {
+        text-decoration: none;
+        color: unset;
+        font-size: 14px;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    a:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+</style>
+
+
+
+<div class="" style="background-color: rgb(255, 226, 231); padding: 86px 0px;">
+    <div class="container-fluid mt-5">
+        <div class="d-flex justify-content-around">
+            <div class="w-70" style="width: 700px;">
+                <img src="~/img/Sweet-removebg-preview.png" alt="">
+                <div class="" style="font-size: xx-large;">
+                    <p>Welcom to my Page</p>
+                </div>
+            </div>
+            <div class="container1 w-30" style="width: 430px;">
+                <h1>Đăng nhập</h1>
+
+               @if (wrong != null)
+                {
+                    <div class="alert alert-danger my-3" ng-hide="status" ng-model="message" style="color: #333;"><i style="color: red;" class="fa-solid fa-ban"></i> @wrong.ToString()</div>
+                }
+                
+                <form id="login-form" method="post">
+                    <div class="input-container">
+                        <label for="username">Số điện thoại:</label>
+                        <input ng-model="taiKhoan" placeholder="Nhập số điện thoại" type="text" id="username"  name="phoneNumber" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="password">Mật khẩu:</label>
+                        <input ng-model="matKhau" placeholder="Nhập mật khẩu" type="password" id="password"  name="passWord" required>
+                    </div>
+                    <button style="width: 100%; font-size:larger;" class="fw-bold mt-3 mb-3"  type="submit">Đăng nhập</button>
+                    <div class="forgot-password">
+                        <a  class="fw-bold mt-3 mb-3">Chưa có tài khoản?</a>
+                    </div>
+                    <hr class="mt-3 mb-3">
+                    <a asp-page="/Register" class="btn fw-bold mt-3 mb-3 pt-2 pb-2" style=" width: 100%; font-size:larger; background-color: rgb(24, 222, 73); color: #fff;">Đăng Ký</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

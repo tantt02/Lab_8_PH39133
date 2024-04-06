@@ -1,0 +1,80 @@
+﻿
+@model Customers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/Assignment_PH35423.styles.css" asp-append-version="true" />
+<script src="~/icon/font_awesome.js">
+</script>
+
+@{
+    ViewData["Title"] = "Register";
+    var valid = ViewData["Valid"];
+}
+
+<div style="width : 500px; margin : auto;">
+    <h1>Đăng ký tài khoản</h1>
+
+    <hr />
+    <div class="row">
+        <div class="col">
+            <form asp-action="ProcessRegister">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group mt-3">
+                    <label asp-for="PhoneNumber" class="control-label">Số điện thoại</label>
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Name" class="control-label">Họ tên</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Address" class="control-label">Địa chỉ</label>
+                    <input asp-for="Address" class="form-control" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <label class="form-check-label">
+                        Giới tính
+                    </label>
+                    <br />
+                    <label>
+                        <input type="radio" checked asp-for="Sex" value="true" /> Nam
+                    </label>
+                    <label>
+                        <input type="radio" asp-for="Sex" value="false" /> Nữ
+                    </label>
+
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Password" class="control-label">Mật khẩu</label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="submit" value="Đăng ký" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (valid != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            Số điện thoại đã tồn tại !
+        </div>
+    }
+
+    <div>
+        <a asp-controller="Home" asp-action="Index">Về trang chủ</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
